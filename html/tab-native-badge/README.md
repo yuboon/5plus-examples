@@ -2,7 +2,7 @@
 
 ## 效果图
 <p align="center">
-	<img src="https://github.com/yuboon/5plus-examples/blob/master/assets/tab-native-badge.png" width="150" height="50">
+	<img src="https://github.com/yuboon/5plus-examples/blob/master/assets/tab-native-badge.png" width="300" height="500">
 	<p align="center">
 		<em>原生TAB选项卡&数字角标</em>
 	</p>
