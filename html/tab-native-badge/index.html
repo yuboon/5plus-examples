@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../lib/mui/mui.min.css">
+		
+		<style>
+			.mui-content{
+				text-align: center;
+				margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="container" class="mui-content">
+			<button type="button" class="mui-btn mui-btn-primary" onclick="openWindow()">打开新窗口</button>
+		</div>
+	</body>
+	
+	<script src="../../js/common.js"></script>
+	<script src="../../lib/mui/mui.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		function openWindow(){
+			mui.openWindow({
+				url:'tab-native-badge.html',
+				id:'tab-native-badge',
+				styles:{
+					// 标题栏
+					/* titleNView: {  
+						autoBackButton:true,
+					    backgroundColor: "#DDDDDD",  
+					    titleText: '新窗口',  
+					    titleColor: "#000000"
+					}, */
+					// 底部选项卡
+					subNViews:[{
+						"id": "tabBar",
+						"styles": {
+							"backgroundColor": "#DDDDDD",
+							"bottom": "0px",
+							"left": "0",
+							"height": "50px",
+							"width": "100%"
+						},
+						"tags": [
+							{
+								"tag": "rect",
+								"id": "indexRect",
+								"text": "",
+								"position": {
+									"top": "0px",
+									"left": "0",
+									"width": "33%",
+									"height": "54px"
+								},
+								"rectStyles": {
+									"color": "#DDDDDD"
+								}
+							},
+							{
+								"tag": "font",
+								"id": "indexIcon",
+								"text": "\ue500",
+								"position": {
+									"top": "4px",
+									"left": "0",
+									"width": "33%",
+									"height": "24px"
+								},
+								"textStyles": {
+									"color":"#000000",
+									"fontSrc": "_www/lib/fonts/mui.ttf",
+									"align": "center",
+									"size": "24px"
+								}
+							}, {
+								"tag": "font",
+								"id": "indexText",
+								"text": "首页",
+								"position": {
+									"top": "25px",
+									"left": "0",
+									"width": "33%",
+									"height": "24px"
+								},
+								"textStyles": {
+									"color":"#000000",
+									"align": "center",
+									"size": "14px"
+								}
+							},{
+								"tag": "rect",
+								"id": "newsRect",
+								"text": "",
+								"position": {
+									"top": "0px",
+									"left": "33%",
+									"width": "33%",
+									"height": "54px"
+								},
+								"rectStyles": {
+									"color": "#DDDDDD"
+								}
+							},{
+								"tag": "font",
+								"id": "newsIcon",
+								"text": "\ue201",
+								"position": {
+									"top": "4px",
+									"left": "33%",
+									"width": "33%",
+									"height": "24px"
+								},
+								"textStyles": {
+									"color":"#000000",
+									"fontSrc": "_www/lib/fonts/mui.ttf",
+									"align": "center",
+									"size": "26px"
+								}
+							}, {
+								"tag": "font",
+								"id": "newsText",
+								"text": "朋友圈",
+								"position": {
+									"top": "25px",
+									"left": "33%",
+									"width": "33%",
+									"height": "24px"
+								},
+								"textStyles": {
+									"color":"#000000",
+									"align": "center",
+									"size": "14px"
+								}
+							},{
+								"tag": "rect",
+								"id": "contactRect",
+								"text": "",
+								"position": {
+									"top": "0px",
+									"left": "66%",
+									"width": "35%",
+									"height": "54px"
+								},
+								"rectStyles": {
+									"color": "#DDDDDD"
+								}
+							},{
+								"tag": "font",
+								"id": "contactIcon",
+								"text": "\ue100",
+								"position": {
+									"top": "4px",
+									"left": "66%",
+									"width": "34%",
+									"height": "24px"
+								},
+								"textStyles": {
+									"color":"#000000",
+									"fontSrc": "_www/lib/fonts/mui.ttf",
+									"align": "center",
+									"size": "24px"
+								}
+							}, {
+								"tag": "font",
+								"id": "contactText",
+								"text": "我的",
+								"position": {
+									"top": "25px",
+									"left": "66%",
+									"width": "34%",
+									"height": "24px"
+								},
+								"textStyles": {
+									"color":"#000000",
+									"align": "center",
+									"size": "14px"
+								}
+							},
+							{
+								"tag": "rect",
+								"id": "tabBorder",
+								"position": {
+									"top": "0",
+									"left": "0",
+									"width": "100%",
+									"height": "0px"
+								},
+								"rectStyles": {
+									"color": "#ccc"
+								}
+							}
+						]
+					},{ // 消息角标
+						"id": "tabBarBadge",
+						"styles": {
+							//"backgroundColor": "#FF0000",
+							"bottom": "30px",
+							"left": "52%",
+							"height": "20px",
+							"width": "35px"
+						},
+						"tags": [
+							{
+								"tag": "rect",
+								"id": "messageBadge",
+								"text": "",
+								"position": {
+									"top": "0px",
+									//"left": "33%",
+									"width": "20px",
+									"height": "20px"
+								},
+								"rectStyles": {
+									"color": "#FF0000",
+									"radius": "50px"
+								}
+							},{
+								"tag": "font",
+								"id": "messageBadgeText",
+								"text": "10",
+								"position": {
+									"top": "0px",
+									//"left": "33%",
+									"width": "20px",
+									"height": "20px"
+								},
+								textStyles:{
+									color:"#FFFFFF",
+									size:"12px"
+								}
+							}
+						]
+					}]
+				},
+				waiting:{
+				  autoShow:false,//自动显示等待框，默认为true
+				},
+				show:{
+					autoShow:true,//页面loaded事件发生后自动显示，默认为true
+					aniShow:'slide-in-right',//页面显示动画，默认为”slide-in-right“
+				}
+			})
+		}
+		
+	</script>
+	
+</html>

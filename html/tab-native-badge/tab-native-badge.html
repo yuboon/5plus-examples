@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+	<div id="container" v-cloak>
+		
+	</div>
+	
+	<script src="../../lib/mui/mui.min.js"></script>
+	<script>
+		document.addEventListener('plusready', function(){
+			var self = plus.webview.currentWebview();
+			var pages = [
+				{id:'tab-child-1',url:'tab-child-1.html',title:'首页'},
+				{id:'tab-child-2',url:'tab-child-2.html',title:'朋友圈'},
+				{id:'tab-child-3',url:'tab-child-3.html',title:'我的'}
+			];
+			
+			for(var i = 0 ; i< pages.length;i++){
+				var tabChild = plus.webview.create(pages[i].url, pages[i].id, {
+					top:0,
+					bottom:50,
+					titleNView: {  
+					    backgroundColor: "#DDDDDD",  
+					    titleText: pages[i].title,  
+					    titleColor: "#000000"
+					}
+				}, {});
+				//tabChild.show('none'); // 预创建
+				self.append(tabChild);
+			}
+			
+			var nview = plus.nativeObj.View.getViewById('tabBar');
+			var pageW = window.innerWidth;
+			nview.addEventListener('touchstart', function(e) {
+				var clientX = e.clientX;
+				if(clientX > 0 && clientX <= parseInt(pageW * 0.33)) {
+					currIndex = 0;
+				} else if(clientX > parseInt(pageW * 0.33) && clientX <= parseInt(pageW * 0.66)) {
+					currIndex = 1;
+				} else if(clientX > parseInt(pageW * 0.66) && clientX <= parseInt(pageW * 0.99)) {
+					currIndex = 2;
+				} else {
+					currIndex = 3;
+				}
+				changeTab(currIndex);
+			});	
+			
+			function changeTab(currIndex){
+				var targetPage = plus.webview.getWebviewById(pages[currIndex].id);
+				targetPage.show();
+				var	nviewObj = self.getStyle().subNViews[0]; // 获取nview对象的属性
+				var reactIndex = [0,3,6]; // 矩形索引位置
+				var currentIndex = currIndex * 3;
+				for(var i = 0; i< reactIndex.length;i++){
+					var	currTag = nviewObj.tags[reactIndex[i]]; // 获取当前需重绘的矩形tag
+					var color = "#FFFFFF";
+					if(reactIndex[i] == currentIndex){
+						color = "#FFFFFF";
+					}else{
+						color = "#DDDDDD";
+					}
+					// 重绘
+					nview.drawRect({
+						"color":color
+					}, currTag.position, currTag.id);
+				}
+			}
+			
+			var total = 10;
+			window.addEventListener('updateBadgeCount',function(){
+				total--;
+				// 重绘角标
+				var	nviewEvent = plus.nativeObj.View.getViewById('tabBarBadge')// 获取nview控件对象		
+				var	nviewObj = self.getStyle().subNViews[1]; // 获取角标对象的属性
+				var	rectTag = nviewObj.tags[0]; // 矩形
+				var	fontTag = nviewObj.tags[1]; // 文本
+				
+				var color = '';
+				var text = '';
+				if(total <= 0){
+					color = "rgba(0,0,0,0)";
+					text = '';
+				}else{
+					color = "#FF0000";
+					text = total;
+				}
+				
+				nviewEvent.drawRect({color:color,"radius": "50px"},rectTag.position, rectTag.id);// 红色
+				nviewEvent.drawText(text, fontTag.position, fontTag.textStyles, fontTag.id);
+			});
+			
+			 // 默认显示第1个窗口
+			changeTab(0);
+			
+		}, false);
+		
+	</script>
+</body>
+</html>

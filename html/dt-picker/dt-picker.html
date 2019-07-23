@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	<link href="../../css/common.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../../lib/mui/mui.min.css">
+	<link rel="stylesheet" type="text/css" href="../../lib/mui/mui.picker.css">
+	
+	<style>
+		html,body{
+			background:rgba(0,0,0,0);
+			background-color:transparent; /* 支持完全透明 */
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="container" v-cloak>
+		
+	</div>
+	
+	<script src="../../js/common.js"></script>
+	<script src="../../lib/mui/mui.min.js"></script>
+	<script src="../../lib/mui/mui.picker.js"></script>
+	<script>
+		var dtpicker = null;
+		function init(){
+			dtpicker = new mui.DtPicker({
+				type: 'date',//设置日历初始视图模式
+				labels: ['年','月','日'],//设置默认标签区域提示语 
+				buttons:['取消','确定']
+			});
+			
+			// 背景遮罩
+			mui("body").off("tap",".mui-dtpicker-header > [data-id='btn-cancel']").on("tap",".mui-dtpicker-header > [data-id='btn-cancel']",function(){
+				var self = plus.webview.currentWebview();
+				dtpicker.hide();
+				self.hide();
+			});
+			
+			// 取消
+			mui("body").off("tap",".mui-backdrop").on("tap",".mui-backdrop",function(){
+				var self = plus.webview.currentWebview();
+				dtpicker.hide();
+				self.hide();
+			});
+			
+			// 显示
+			show();
+		}
+		
+		function show(){
+			dtpicker.show(function(SelectedItem) {
+				var self = plus.webview.currentWebview();
+				var opener = self.opener();
+				dtpicker.hide();
+				self.hide();
+				// 发送选择事件
+				mui.fire(opener,'DtSelectedItem',{
+					SelectedItem:SelectedItem
+				});
+			});
+		}
+		
+		// 初始化执行
+		init();
+		
+	</script>
+</body>
+</html>

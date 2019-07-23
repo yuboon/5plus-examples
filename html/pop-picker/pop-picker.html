@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	<link href="../../css/common.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../../lib/mui/mui.min.css">
+	<link rel="stylesheet" type="text/css" href="../../lib/mui/mui.picker.css">
+	
+	<style>
+		html,body{
+			background:rgba(0,0,0,0);
+			background-color:transparent; /* 支持完全透明 */
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="container" v-cloak>
+		
+	</div>
+	
+	<script src="../../js/common.js"></script>
+	<script src="../../lib/mui/mui.min.js"></script>
+	<script src="../../lib/mui/mui.picker.js"></script>
+	<script>
+		var picker = null;
+		function init(){
+			picker = new mui.PopPicker({
+				buttons:['取消','确定']
+			});
+			picker.setData([
+				{text:"星期一",value:"1"},
+				{text:"星期二",value:"2"},
+				{text:"星期三",value:"3"},
+				{text:"星期四",value:"4"},
+				{text:"星期五",value:"5"},
+				{text:"星期六",value:"6"},
+				{text:"星期日",value:"7"}
+			]);
+			
+			// 背景遮罩
+			mui("body").off("tap",".mui-backdrop").on("tap",".mui-backdrop",function(){
+				var self = plus.webview.currentWebview();
+				picker.hide();
+				self.hide();
+			});
+			
+			// 取消
+			mui("body").off("tap",".mui-poppicker-btn-cancel").on("tap",".mui-poppicker-btn-cancel",function(){
+				var self = plus.webview.currentWebview();
+				picker.hide();
+				self.hide();
+			});
+			
+			// 显示
+			show();
+		}
+		
+		function show(){
+			picker.show(function(SelectedItem) {
+				var self = plus.webview.currentWebview();
+				var opener = self.opener();
+				picker.hide();
+				self.hide();
+				// 发送选择事件
+				mui.fire(opener,'SelectedItem',{
+					SelectedItem:SelectedItem
+				});
+			});
+		}
+		
+		// 初始化执行
+		init();
+		
+	</script>
+</body>
+</html>

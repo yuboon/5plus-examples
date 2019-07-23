@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	<link href="../../css/common.css" rel="stylesheet">
+	<link href="../../lib/toastr/toastr.min.css" rel="stylesheet">
+	
+</head>
+<body>
+	<div id="container" v-cloak>
+		
+	</div>
+	
+	<script src="../../lib/jquery/jquery-2.1.0.min.js"></script>
+	<script src="../../lib/toastr/toastr.min.js"></script>
+	<script src="../../js/common.js"></script>
+	<script src="../../lib/mui/mui.min.js"></script>
+	<script>
+		// Toast配置
+		var option = {
+			//closeButton: true,
+			positionClass: 'toast-bottom-center',
+			timeOut: 3000 , // 持续时间,默认3秒
+			//preventDuplicates: true,
+			onclick: function(){
+				var self = plus.webview.currentWebview();
+				toastr.remove();
+				self.hide();
+			},
+			onCloseClick:function(){
+				var self = plus.webview.currentWebview();
+				toastr.remove();
+				self.hide();
+			},
+			onHidden:function(){
+				var self = plus.webview.currentWebview();
+				toastr.remove();
+				self.hide();
+			}
+		}
+		
+		// plus准备完成
+		document.addEventListener('plusready', function(){
+			var self = plus.webview.currentWebview();
+			show(self.type,self.message);
+		}, false);
+		
+		// 显示Toast
+		function show(type,message){
+			type = type ? type:'info';
+			message = message ? message:'No Message';
+			// 弹出提示框
+			toastr[type](null, message,option);
+		}
+		
+	</script>
+</body>
+</html>

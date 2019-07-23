@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../lib/mui/mui.min.css">
+		
+		<style>
+			.mui-content{
+				text-align: center;
+				margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="container" class="mui-content">
+			<button type="button" class="mui-btn mui-btn-primary" onclick="updateBadgeCount()">更新消息数量</button>
+		</div>
+	</body>
+	
+	<script src="../../lib/mui/mui.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		function updateBadgeCount(){
+			var tabMain = plus.webview.getWebviewById('tab-native-badge');
+			mui.fire(tabMain,'updateBadgeCount');
+		}
+	</script>
+	
+</html>

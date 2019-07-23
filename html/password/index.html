@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../lib/mui/mui.min.css">
+		
+		<style>
+			.mui-content{
+				text-align: center;
+				margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="container" class="mui-content">
+			<button type="button" class="mui-btn mui-btn-primary" onclick="inputPassword();">输入密码</button>
+			<div id="password"></div>
+		</div>
+	</body>
+	
+	<script src="../../js/common.js"></script>
+	<script src="../../lib/mui/mui.min.js"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+		function inputPassword(){
+			var webview = plus.webview.getWebviewById('password');
+			if(webview){
+				webview.show();
+			}else{
+				mui.openWindow({
+					url:'password.html',
+					id:'password',
+					styles:{
+						background: 'transparent' // webview背景透明
+					},
+					waiting:{
+					  autoShow:false,//自动显示等待框，默认为true
+					},
+					show:{
+						autoShow:true,//页面loaded事件发生后自动显示，默认为true
+						aniShow:'slide-in',//页面显示动画，默认为”slide-in-right“
+					}
+				})
+			}
+		}
+		
+		// 监听输入完成回调事件
+		window.addEventListener('passwordInputFinish',function(event){
+			var password = event.detail.password;
+			document.getElementById('password').innerHTML = '输入的密码 = ' + password;
+		});
+		
+	</script>
+	
+</html>

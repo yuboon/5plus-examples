@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../lib/mui/mui.min.css">
+		
+		<style>
+			.mui-content{
+				text-align: center;
+				margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="container" class="mui-content">
+			<div style="margin-top: 70%;">
+				<button type="button" class="mui-btn mui-btn-primary" onclick="toast('info','这是普通提示');">普通提示</button>
+				<button type="button" class="mui-btn mui-btn-primary" onclick="toast('success','这是成功提示');">成功提示</button>
+				<button type="button" class="mui-btn mui-btn-primary" onclick="toast('error','这是错误提示');">错误提示</button>
+				<button type="button" class="mui-btn mui-btn-primary" onclick="toast('warning','这是告警提示');">告警提示</button>
+			</div>
+		</div>
+	</body>
+	
+	<script src="../../js/common.js"></script>
+	<script src="../../lib/mui/mui.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		function toast(type,message){
+			var webview = plus.webview.getWebviewById('toast');
+			if(webview){
+				webview.show();
+				webview.evalJS('show("'+ type +'","'+ message +'")'); // 调用显示方法
+			}else{
+				mui.openWindow({
+					url:'toast.html',
+					id:'toast',
+					styles:{
+						background: 'transparent' // webview背景透明
+					},
+					waiting:{
+					  autoShow:false,//自动显示等待框，默认为true
+					},
+					show:{
+						autoShow:true,//页面loaded事件发生后自动显示，默认为true
+						aniShow:'slide-in',//页面显示动画，默认为”slide-in-right“
+					},
+					extras:{
+						type:type,
+						message:message
+					}
+				})
+			}
+		}
+	</script>
+	
+</html>
