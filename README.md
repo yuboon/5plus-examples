@@ -10,6 +10,7 @@
 时间选择器 | html/dt-picker
 Toast提示 | html/toast
 输入框输入值限制 | html/input-reg
+底部原生TAB&数字角标 | html/tab-native-badge
 
 ## 问题汇总
 #### ◆ 关于原生绘制图标无法显示的问题
