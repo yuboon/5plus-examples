@@ -27,7 +27,8 @@ _解决办法：使用统一的字体库，避免使用多个字体库_
 
 > 可能的原因一：压缩保存的路径问题
 
-_解决办法：保存路径必须带file://同时相对路径为_doc/photo.jpg 或 _www/photo.jpg_
+_解决办法：保存路径必须带file://同时相对路径为_doc/photo.jpg 或 \_www/photo.jpg_
+
 _完整路径获取示例：`var distPath = 'file://' + plus.io.convertLocalFileSystemURL('_doc/photo.jpg')`，兼容IOS与Android_
 
 
