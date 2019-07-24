@@ -6,7 +6,9 @@
 	<p align="center">
 		<em>中文</em>
 	</p>
-	
+</p>
+
+<p align="center">
 	<img src="https://github.com/yuboon/5plus-examples/blob/master/assets/i18n_en.png" width="300" height="500">
 	<p align="center">
 		<em>英文</em>
