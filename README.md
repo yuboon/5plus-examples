@@ -14,7 +14,7 @@ Toast提示 | html/toast
 IOS输入框点击输入延迟问题解决 | html/ios-input
 国际化-Jquery实现 | html/i18n-jquery
 国际化-Vue实现 | html/i18n-vue
-
+iframe中访问plus接口 | html/iframe
 
 ## 问题汇总
 #### ◆ 关于原生绘制图标无法显示的问题
@@ -30,4 +30,4 @@ _解决办法：使用统一的字体库，避免使用多个字体库_
 ## 小技巧
 #### ◆ iframe子页面中调用plus接口
 
-> 存在iframe的页面，调用plus接口，可通过parent.plus调用
+> 存在iframe的页面，调用plus接口，可通过parent.plus调用，详见案例分享中`iframe中访问plus接口`
