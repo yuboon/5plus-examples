@@ -31,6 +31,12 @@ _解决办法：保存路径必须带file://同时相对路径为_doc/photo.jpg 
 
 _完整路径获取示例：`var distPath = 'file://' + plus.io.convertLocalFileSystemURL('_doc/photo.jpg')`，兼容IOS与Android_
 
+#### ◆ 5+项目打开新窗口后，点击返回按钮提示退出应用
+
+> 可能的原因一：未引入官方的common.js
+
+_解决办法：使用hbuilder建立Hello 5+ 样例工程，从中拷贝common.js到项目中，在新窗口页面引入该common.js
+
 
 
 ## 小技巧
