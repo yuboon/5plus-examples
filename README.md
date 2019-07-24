@@ -11,6 +11,10 @@
 Toast提示 | html/toast
 输入框输入值限制 | html/input-reg
 底部原生TAB&数字角标 | html/tab-native-badge
+IOS输入框点击输入延迟问题解决 | html/ios-input
+国际化-Jquery实现 | html/i18n-jquery
+国际化-Vue实现 | html/i18n-vue
+
 
 ## 问题汇总
 #### ◆ 关于原生绘制图标无法显示的问题
