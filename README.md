@@ -35,3 +35,7 @@ _解决办法：保存路径必须带file://同时相对路径为_doc/photo.jpg 
 #### ◆ iframe子页面中调用plus接口
 
 > 存在iframe的页面，调用plus接口，可通过parent.plus调用，详见案例分享中`iframe中访问plus接口`
+
+#### ◆ plus接口调用问题
+
+> IOS上mui.ready函数中可以正常调用plus接口，Android则不行，建议强制全部使用plusReady
