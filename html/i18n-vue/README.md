@@ -1,4 +1,4 @@
-# i18n-jquery版
+# i18n-vue版
 
 ## 效果图
 <p align="center">
