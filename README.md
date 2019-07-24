@@ -8,7 +8,7 @@
 六位密码输入框 | html/password
 数据选择器 | html/pop-picker
 时间选择器 | html/dt-picker
-Toast提示 | html/toast
+Toast提示（美化） | html/toast
 输入框输入值限制 | html/input-reg
 底部原生TAB&数字角标 | html/tab-native-badge
 IOS输入框点击输入延迟问题解决 | html/ios-input
