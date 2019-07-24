@@ -37,6 +37,11 @@ _完整路径获取示例：`var distPath = 'file://' + plus.io.convertLocalFile
 
 _解决办法：使用hbuilder建立Hello 5+ 样例工程，从中拷贝common.js到项目中，在新窗口页面引入该common.js_
 
+#### ◆ mui prompt 使用div方式时，出现页面滚动的情况
+
+> 可能的原因一：界面样式冲突或不兼容
+
+_解决办法：可将prompt显示出来的div内容块复制出来（使用官方mui在线演示通过浏览器调试工具选择复制），放在当前页面，自主控制div的隐藏显示即可_
 
 
 ## 小技巧
