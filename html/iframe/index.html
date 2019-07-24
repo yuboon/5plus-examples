@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../lib/mui/mui.min.css">
+		
+		<style>
+			html,body{
+				height: 100%;
+				overflow: hidden;
+			}
+			.mui-content{
+				text-align: center;
+				margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="container" class="mui-content" style="height: 100%;">
+			<iframe id="frame" src="frame.html" style="border: 1px solid red;"></iframe>
+			<button onclick="reload();">重新加载iframe</button>
+		</div>
+	</body>
+	
+	<script src="../../js/common.js"></script>
+	<script src="../../lib/mui/mui.min.js"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+		function reload(){
+			document.getElementById('frame').src = 'frame.html';
+		}
+	</script>
+	
+</html>

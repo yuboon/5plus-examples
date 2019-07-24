@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../lib/mui/mui.min.css">
+		
+		<style>
+			.mui-content{
+				text-align: center;
+				margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="container" class="mui-content">
+			<button type="button" class="mui-btn mui-btn-primary" onclick="getSystemInfo()">获取系统信息</button>
+		</div>
+		<div id="info">
+			
+		</div>
+	</body>
+	
+	<script src="../../js/common.js"></script>
+	<script src="../../lib/mui/mui.min.js"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+		function getSystemInfo(){
+			// 通过父窗口plus获取相关信息
+			var uuid = "设备UUID:" + parent.plus.device.uuid;
+			var osName = "操作系统:" + parent.plus.os.name;
+			var version = "系统版本:" + parent.plus.os.version;
+			document.getElementById('info').innerHTML = uuid + '<br>' + osName + '<br>' + version;
+		}
+	</script>
+	
+</html>
