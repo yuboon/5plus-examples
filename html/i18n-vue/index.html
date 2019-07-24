@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../lib/mui/mui.min.css">
+		
+		<style>
+			.mui-content{
+				text-align: center;
+				margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="container" class="mui-content">
+			<div class="mui-card">
+				<div class="mui-input-group" id="input_example">
+					<div class="mui-input-row">
+						<label i18nKey="string_username">{{$t("string_username")}}</label>
+						<input type="text" class="mui-input-clear" id="col1" data-input-clear="18"><span class="mui-icon mui-icon-clear mui-hidden"></span>
+					</div>
+					<div class="mui-input-row">
+						<label>{{$t("string_password")}}</label>
+						<input type="password" class="mui-input-password" id="col2" data-input-password="19"><span class="mui-icon mui-icon-eye"></span>
+					</div>
+					<div class="mui-button-row">
+						<button i18nKey="string_login" type="button" class="mui-btn mui-btn-primary" id="input_check">{{$t("string_login")}}</button>
+					</div>
+					
+					<div class="mui-button-row">
+						<button type="button" @click="changeLangZh" class="mui-btn" id="input_check">切换中文</button>
+						<button type="button" @click="changeLangEn" class="mui-btn" id="input_check">切换英文</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+	<script src="../../js/common.js"></script>
+	<script src="../../lib/vue/vue.js"></script>
+	<script src="../../lib/vue/vue-i18n.js"></script>
+	<script src="i18n.js"></script>
+	<script src="../../lib/mui/mui.min.js"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+		
+		// 国际化生命
+		var vueI18n = new VueI18n({
+		  	//定义默认语言
+		  	locale: 'zh', 
+		  	messages: i18n // 定义在i18n.js中
+		});
+		
+		var vm = new Vue({
+			el: '#container',
+			i18n: vueI18n,
+			data: {
+				
+			},
+			mounted:function(){
+				
+			},
+			methods:{
+				changeLangZh:function(){
+					vm.$i18n.locale = 'zh';
+				},
+				changeLangEn:function(){
+					vm.$i18n.locale = 'en';
+				}
+			}
+		});	
+	</script>
+	
+</html>
