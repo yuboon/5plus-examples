@@ -35,7 +35,7 @@ _完整路径获取示例：`var distPath = 'file://' + plus.io.convertLocalFile
 
 > 可能的原因一：未引入官方的common.js
 
-_解决办法：使用hbuilder建立Hello 5+ 样例工程，从中拷贝common.js到项目中，在新窗口页面引入该common.js
+_解决办法：使用hbuilder建立Hello 5+ 样例工程，从中拷贝common.js到项目中，在新窗口页面引入该common.js_
 
 
 
